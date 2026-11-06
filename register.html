@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create account | CAN42</title>
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/auth.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body data-page="register">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<main id="main" class="auth-wrap">
+  <aside class="auth-side">
+    <h2>Join CAN42</h2>
+    <p>Create a free account to see available opportunities and track your points.</p>
+    <ul><li><span data-icon="mail"></span>Email verification protects your account.</li><li><span data-icon="coin"></span>Points are promotional rewards, not guaranteed income.</li><li><span data-icon="users"></span>Have a referral code? Add it below.</li></ul>
+  </aside>
+  <section class="auth-main">
+    <div class="card auth-card">
+      <form id="register-form" novalidate>
+        <h1>Create your account</h1>
+        <div class="field"><label for="full_name">Full name</label><input id="full_name" name="full_name" autocomplete="name" maxlength="100" required></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+        <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" data-pw autocomplete="new-password" required><small>At least 8 characters, with a letter and a number.</small></div>
+        <div class="field"><label for="confirm">Confirm password</label><input id="confirm" name="confirm" type="password" data-pw autocomplete="new-password" required></div>
+        <div class="field"><label for="referral">Referral code (optional)</label><input id="referral" name="referral" maxlength="16" autocapitalize="characters" autocomplete="off"></div>
+        <label class="check"><input type="checkbox" data-show-password> Show passwords</label>
+        <label class="check"><input type="checkbox" name="terms" required><span>I accept the <a href="terms.html" target="_blank" rel="noopener">Terms</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+        <div class="form-msg" role="alert" aria-live="polite"></div>
+        <button class="btn btn-primary btn-block" type="submit">Create account</button>
+        <div class="auth-links"><span>Already registered?</span><a href="login.html">Log in</a></div>
+      </form>
+      <div id="register-done" class="done-box" hidden>
+        <span data-icon="mail"></span>
+        <h1>Check your email</h1>
+        <p>We sent a verification link to <strong id="done-email"></strong>. Open it, then log in. Check spam if you do not see it.</p>
+        <a class="btn btn-primary" href="login.html">Go to log in</a>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script type="module" src="assets/js/auth.js"></script>
+</body>
+</html>

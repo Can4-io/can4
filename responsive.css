@@ -1,0 +1,28 @@
+/* CAN42 | responsive.css - mobile-first overrides loaded after the other files */
+@media (max-width:1100px){
+  .nav-toggle{display:inline-flex}
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:.2rem;background:var(--navy);padding:.8rem 1.25rem 1.4rem;border-top:1px solid rgba(255,255,255,.12);box-shadow:0 20px 30px rgba(0,0,0,.25);margin:0}
+  .nav.open{display:flex}
+  .nav a{padding:.85rem .9rem;font-size:1.05rem}
+  .nav-auth{flex-direction:column;align-items:stretch;border:0;margin:.6rem 0 0;padding:.8rem 0 0;border-top:1px solid rgba(255,255,255,.15)}
+  .nav-auth .btn{min-height:50px}
+}
+@media (max-width:900px){
+  .hero{padding:2.5rem 0 2rem}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{order:-1;width:min(70%,320px)}
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .feature-grid{grid-template-columns:repeat(2,1fr)}
+  .auth-wrap{grid-template-columns:1fr}
+  .auth-side{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-grid>div{grid-column:1/-1}
+}
+@media (max-width:560px){
+  .container{width:calc(100% - 2rem)}
+  .section{padding:2.8rem 0}
+  .trust-grid,.feature-grid{grid-template-columns:1fr}
+  .hero-actions .btn{width:100%}
+  .cta{padding:1.8rem 1.4rem}
+  .cta .btn{width:100%}
+}

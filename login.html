@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log in | CAN42</title>
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/auth.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body data-page="login">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<main id="main" class="auth-wrap">
+  <aside class="auth-side">
+    <h2>Welcome back</h2>
+    <p>Pick up where you left off and check your points.</p>
+    <ul><li><span data-icon="shield"></span>Passwords are handled by a secure authentication service.</li><li><span data-icon="lock"></span>We never ask for PINs or OTPs.</li></ul>
+  </aside>
+  <section class="auth-main">
+    <div class="card auth-card">
+      <h1>Log in</h1>
+      <p class="lead">Use the email you registered with.</p>
+      <form id="login-form" novalidate>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+        <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" data-pw autocomplete="current-password" required></div>
+        <label class="check"><input type="checkbox" data-show-password> Show password</label>
+        <div class="form-msg" role="alert" aria-live="polite"></div>
+        <button class="btn btn-primary btn-block" type="submit">Log in</button>
+        <button class="text-btn" type="button" id="resend-verification" hidden>Resend verification email</button>
+      </form>
+      <div class="auth-links"><a href="forgot-password.html">Forgot password?</a><a href="register.html">Create an account</a></div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script type="module" src="assets/js/auth.js"></script>
+</body>
+</html>

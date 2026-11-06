@@ -1,0 +1,15 @@
+/* CAN42 | auth.css */
+.auth-wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);min-height:calc(100vh - 68px)}
+.auth-side{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center}
+.auth-side h2{color:#fff;font-size:2rem}
+.auth-side p{color:#C9D7F2;max-width:26rem}
+.auth-side ul{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;gap:.8rem}
+.auth-side li{display:flex;gap:.7rem;align-items:flex-start;color:#E3ECFB}
+.auth-side li .icon{color:var(--amber);margin-top:.15rem}
+.auth-main{display:grid;place-items:center;padding:2.5rem 1.25rem;background:var(--sky)}
+.auth-card{width:min(100%,460px)}
+.auth-card h1{font-size:1.8rem}
+.auth-card .lead{color:var(--muted)}
+.auth-links{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.2rem;font-size:.98rem}
+.done-box{text-align:center}
+.done-box .icon{width:56px;height:56px;color:var(--blue)}
