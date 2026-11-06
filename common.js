@@ -137,6 +137,7 @@ export async function renderChrome() {
     bar.textContent = 'Setup needed: add your Supabase URL and anon key in assets/js/config.js (see SETUP.md).';
     document.body.prepend(bar);
   }
+  rewritePendingLinks();
   hydrateIcons();
 }
 
@@ -145,3 +146,114 @@ document.addEventListener('click', e => {
 });
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderChrome);
 else renderChrome();
+
+// =====================================================================
+// Part 2 additions (helpers shared by the signed-in pages)
+// =====================================================================
+
+// Pages that do not exist yet are sent to coming-soon.html instead of a broken link.
+// When a later part adds a page, delete its name from this list.
+const PENDING_PAGES = ['earn', 'videos', 'advertisements', 'referrals', 'support', 'about', 'faq',
+  'terms', 'privacy', 'reward-policy', 'withdrawal-policy'];
+
+export function rewritePendingLinks(root = document) {
+  $$('a[href]', root).forEach(a => {
+    const m = /^([a-z0-9-]+)\.html(?:[?#].*)?$/i.exec(a.getAttribute('href') || '');
+    if (m && PENDING_PAGES.includes(m[1].toLowerCase())) {
+      a.setAttribute('href', `coming-soon.html?page=${encodeURIComponent(m[1].toLowerCase())}`);
+    }
+  });
+}
+
+export const TYPE_LABELS = {
+  video_reward: 'Video reward', ad_reward: 'Advertisement reward', referral_reward: 'Referral reward',
+  withdrawal_reserve: 'Withdrawal (reserved)', withdrawal_release: 'Withdrawal (points returned)',
+  withdrawal_paid: 'Withdrawal (paid)', reversal: 'Reversal', admin_adjustment: 'Admin adjustment'
+};
+export const STATUS_LABELS = {
+  pending: 'Pending', approved: 'Approved', rejected: 'Rejected', completed: 'Completed', reversed: 'Reversed',
+  requested: 'Requested', under_review: 'Under review', verification_required: 'Verification required',
+  processing: 'Processing', paid: 'Paid'
+};
+export const statusBadge = s =>
+  `<span class="badge badge-${escapeHtml(s)}">${escapeHtml(STATUS_LABELS[s] || s)}</span>`;
+export function formatDate(iso) {
+  try { return new Date(iso).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }); } catch { return ''; }
+}
+export const emptyState = text => `<p class="empty">${escapeHtml(text)}</p>`;
+export const maskAccount = v => { const s = String(v || ''); return s.length > 4 ? '\u2022\u2022\u2022\u2022 ' + escapeHtml(s.slice(-4)) : '\u2022\u2022\u2022\u2022'; };
+
+export function ledgerRowHtml(r) {
+  const pts = Number(r.points);
+  return `<li class="row">
+    <div class="row-main">
+      <strong>${escapeHtml(TYPE_LABELS[r.entry_type] || r.entry_type)}</strong>
+      <span class="row-meta"><span>${escapeHtml(r.reference)}</span><span>${escapeHtml(formatDate(r.created_at))}</span></span>
+      ${r.note ? `<span class="row-note">${escapeHtml(r.note)}</span>` : ''}
+    </div>
+    <div class="row-side"><span class="pts ${pts > 0 ? 'pos' : 'neg'}">${pts > 0 ? '+' : ''}${formatPoints(pts)}</span>${statusBadge(r.status)}</div>
+  </li>`;
+}
+const METHOD_LABELS = { jazzcash: 'JazzCash', easypaisa: 'Easypaisa', bank_transfer: 'Bank transfer' };
+export const methodLabel = m => METHOD_LABELS[m] || m;
+export function withdrawalRowHtml(w) {
+  const extra = w.status === 'paid' && w.payment_reference ? `Payment reference: ${w.payment_reference}`
+    : (['rejected', 'verification_required'].includes(w.status) && w.admin_note ? w.admin_note : '');
+  return `<li class="row">
+    <div class="row-main">
+      <strong>${escapeHtml(methodLabel(w.method))}</strong>
+      <span class="row-meta"><span>${escapeHtml(w.reference)}</span><span>${escapeHtml(formatDate(w.created_at))}</span></span>
+      ${extra ? `<span class="row-note">${escapeHtml(extra)}</span>` : ''}
+    </div>
+    <div class="row-side"><span class="pts">${formatPoints(w.points)}</span><span class="row-usd">$${Number(w.amount_usd).toFixed(2)}</span>${statusBadge(w.status)}</div>
+  </li>`;
+}
+
+// Public platform settings (rate, minimum, on/off switches). Falls back to SAFE defaults (everything off).
+export async function loadSettings() {
+  const s = { points_per_usd: 1000, min_withdrawal_usd: 20, payouts_enabled: false, rewards_enabled: false, support_email: CONFIG.SUPPORT_EMAIL };
+  const { data, error } = await supabase.from('platform_settings').select('key,value');
+  if (error || !data) return s;
+  data.forEach(r => { s[r.key] = r.value; });
+  s.points_per_usd = Number(s.points_per_usd) > 0 ? Number(s.points_per_usd) : 1000;
+  s.min_withdrawal_usd = Number(s.min_withdrawal_usd) > 0 ? Number(s.min_withdrawal_usd) : 20;
+  s.payouts_enabled = s.payouts_enabled === true || s.payouts_enabled === 'true';
+  s.rewards_enabled = s.rewards_enabled === true || s.rewards_enabled === 'true';
+  return s;
+}
+
+const APP_NAV = [
+  ['dashboard', 'Dashboard', 'dashboard.html'], ['wallet', 'Wallet', 'wallet.html'],
+  ['transactions', 'Transactions', 'transactions.html'], ['withdrawals', 'Withdrawals', 'withdrawals.html'],
+  ['notifications', 'Notifications', 'notifications.html'], ['profile', 'Profile', 'profile.html']
+];
+export async function renderAppNav(active, uid) {
+  const box = $('#app-nav');
+  if (!box) return;
+  box.innerHTML = `<div class="container"><nav class="app-nav" aria-label="Account">${APP_NAV.map(([id, label, href]) =>
+    `<a href="${href}"${id === active ? ' aria-current="page"' : ''}>${label}${id === 'notifications' ? '<span class="dot" id="unread-dot" hidden></span>' : ''}</a>`).join('')}</nav></div>`;
+  if (uid) {
+    const { count } = await supabase.from('notifications').select('id', { count: 'exact', head: true }).eq('user_id', uid).is('read_at', null);
+    const dot = $('#unread-dot');
+    if (dot && count > 0) { dot.textContent = count > 99 ? '99+' : String(count); dot.hidden = false; }
+  }
+}
+
+// Every signed-in page starts with this. Returns the session, or null (and redirects to login).
+export async function initProtectedPage(active) {
+  const session = await requireAuth();
+  if (!session) return null;
+  supabase.auth.onAuthStateChange(ev => { if (ev === 'SIGNED_OUT') location.replace('login.html'); });
+  await renderAppNav(active, session.user.id);
+  const main = $('#main');
+  if (main) main.hidden = false;
+  return session;
+}
+
+// Turn a database error into a short, safe message for the person.
+export function friendlyError(error) {
+  if (!error) return '';
+  if (error.code === '23505') return 'You already have a withdrawal in progress.';
+  if (error.code === 'P0001' || error.code === '42501') return error.message;   // our own readable messages
+  return 'Something went wrong. Please try again, or contact support.';
+}

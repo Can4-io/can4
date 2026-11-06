@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Withdrawals | CAN42</title>
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/wallet.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body data-page="withdrawals">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<div id="app-nav"></div>
+<main id="main" hidden>
+<div class="container app-page">
+  <div class="page-head"><div><h1>Withdrawals</h1><p class="sub">Request a payout of approved points when withdrawals are open.</p></div></div>
+  <div id="notices"></div>
+  <div class="two-col two-col-wide">
+    <section class="panel" aria-labelledby="wd-title">
+      <div class="panel-head"><h2 id="wd-title">New request</h2><span class="hint" id="wd-balance"></span></div>
+      <form id="wd-form" novalidate>
+        <fieldset id="wd-fields" class="plain">
+          <div class="field"><label for="method">Payment method</label>
+            <select id="method" name="method"><option value="jazzcash">JazzCash</option><option value="easypaisa">Easypaisa</option><option value="bank_transfer">Bank transfer</option></select></div>
+          <div class="field"><label for="points">Points to withdraw</label>
+            <input id="points" name="points" type="number" inputmode="numeric" min="1" step="1" autocomplete="off">
+            <small id="points-help"></small>
+            <button type="button" class="text-btn" id="use-all">Use all available points</button></div>
+          <div class="field"><label for="holder">Account holder name</label><input id="holder" name="holder" maxlength="100" autocomplete="name"></div>
+          <div class="field"><label for="account" id="account-label">Mobile account number</label><input id="account" name="account" maxlength="34" autocomplete="off" inputmode="text"></div>
+          <div class="field" id="bank-field" hidden><label for="bank">Bank name</label><input id="bank" name="bank" maxlength="100" autocomplete="off"></div>
+          <p class="warn-box"><strong>Never enter</strong> an ATM PIN, bank password, JazzCash or Easypaisa PIN, OTP or card CVV. CAN42 will never ask for them.</p>
+          <label class="check"><input type="checkbox" id="confirm"><span>These details are correct. I understand payment is sent manually after review and may be refused.</span></label>
+          <div class="form-msg" role="alert" aria-live="polite"></div>
+          <button class="btn btn-primary btn-block" type="submit" id="wd-submit">Submit request</button>
+        </fieldset>
+      </form>
+    </section>
+    <section class="panel"><div class="panel-head"><h2>Your requests</h2></div><ul class="list" id="wd-list"><li class="empty">Loading...</li></ul>
+      <p class="hint">Steps: Requested, Under review, Approved, Processing, Paid. Points stay reserved until a request is paid or rejected. Rejected requests return the points to your wallet.</p></section>
+  </div>
+</div>
+</main>
+<div id="site-footer"></div>
+<script type="module" src="assets/js/withdrawals.js"></script>
+</body>
+</html>

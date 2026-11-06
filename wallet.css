@@ -1,0 +1,7 @@
+/* CAN42 | wallet.css - wallet hero, progress bar */
+.wallet-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;border-radius:24px;padding:1.8rem;display:flex;gap:1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:1.2rem}
+.wallet-label{display:block;color:#C9D7F2;font-weight:600}
+.wallet-amount{display:block;font:700 clamp(2.2rem,7vw,3.4rem) var(--font-head);line-height:1.1;overflow-wrap:anywhere}
+.wallet-usd{display:block;color:#C9D7F2;font-size:.95rem;max-width:30rem}
+.progress{height:14px;border-radius:999px;background:var(--sky-2);overflow:hidden}
+.progress span{display:block;height:100%;width:0;background:var(--blue);border-radius:999px;transition:width .5s ease}

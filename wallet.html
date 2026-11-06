@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Wallet | CAN42</title>
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/wallet.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body data-page="wallet">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<div id="app-nav"></div>
+<main id="main" hidden>
+<div class="container app-page">
+  <div class="page-head"><div><h1>Wallet</h1><p class="sub">CAN42 Points are promotional rewards, not money held in a bank account.</p></div></div>
+  <div id="notices"></div>
+  <section class="wallet-hero" aria-label="Available balance">
+    <div>
+      <span class="wallet-label">Available points</span>
+      <strong class="wallet-amount" data-stat="available">&ndash;</strong>
+      <span class="wallet-usd" data-stat="available-usd"></span>
+    </div>
+    <a class="btn btn-primary" href="withdrawals.html">Request withdrawal</a>
+  </section>
+  <section class="stat-grid stat-grid-4" aria-label="Balance details">
+    <div class="stat"><span class="stat-label">Pending points</span><strong class="stat-value" data-stat="pending">&ndash;</strong><span class="stat-sub" data-stat="pending-sub">Waiting for approval</span></div>
+    <div class="stat"><span class="stat-label">Reserved points</span><strong class="stat-value" data-stat="reserved">&ndash;</strong><span class="stat-sub" data-stat="reserved-sub">Held for a withdrawal</span></div>
+    <div class="stat"><span class="stat-label">Total earned</span><strong class="stat-value" data-stat="lifetime">&ndash;</strong><span class="stat-sub" data-stat="lifetime-sub"></span></div>
+    <div class="stat"><span class="stat-label">Total withdrawn</span><strong class="stat-value" data-stat="withdrawn">&ndash;</strong><span class="stat-sub" data-stat="withdrawn-sub"></span></div>
+  </section>
+  <section class="panel progress-panel" aria-label="Progress to minimum withdrawal">
+    <div class="panel-head"><h2>Minimum withdrawal</h2><span id="min-text"></span></div>
+    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="min-bar"><span></span></div>
+    <p class="hint" id="min-hint"></p>
+  </section>
+  <section class="panel"><div class="panel-head"><h2>Earning history</h2><a href="transactions.html">All transactions</a></div><ul class="list" id="earnings"><li class="empty">Loading...</li></ul></section>
+  <p class="hint">The conversion rate shown is a configurable demonstration rate and is not a guaranteed cash value.</p>
+</div>
+</main>
+<div id="site-footer"></div>
+<script type="module" src="assets/js/wallet.js"></script>
+</body>
+</html>

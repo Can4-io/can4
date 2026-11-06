@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Notifications | CAN42</title>
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body data-page="notifications">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<div id="app-nav"></div>
+<main id="main" hidden>
+<div class="container app-page">
+  <div class="page-head"><div><h1>Notifications</h1><p class="sub">Updates about rewards, withdrawals and your account.</p></div>
+    <button type="button" class="btn btn-ghost btn-sm" id="mark-all">Mark all as read</button></div>
+  <div class="chips" id="n-chips" role="group" aria-label="Filter notifications">
+    <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="chip" data-filter="unread" aria-pressed="false">Unread</button>
+  </div>
+  <section class="panel"><ul class="list" id="n-list"><li class="empty">Loading...</li></ul></section>
+</div>
+</main>
+<div id="site-footer"></div>
+<script type="module" src="assets/js/notifications.js"></script>
+</body>
+</html>

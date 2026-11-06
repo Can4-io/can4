@@ -1,7 +1,7 @@
-# CAN42 - Part 1 (Foundation)
+# CAN42 - Parts 1 and 2 (Foundation, Dashboard and Wallet)
 
 Watch. Earn. Connect. A static website (HTML/CSS/JavaScript) with a Supabase backend.
-This ZIP is Part 1 only. Later parts add the dashboard, wallet, admin panel and the rest.
+Part 1 = landing and sign-in. Part 2 = dashboard, wallet, transactions, withdrawals form (locked), profile, notifications. Later parts add earning, referrals, support, the admin panel and policy pages.
 
 ## Where each file belongs (keep these exact folder names)
 
@@ -44,3 +44,13 @@ supabase/migrations/ (run in Supabase SQL Editor, in this order, once each)
 3. Never put the Supabase service_role key in any file.
 
 Menu links to pages not in Part 1 (Earn, Wallet, FAQ, etc.) will show "not found" until later parts.
+
+## Added in Part 2
+CAN42/
+- dashboard.html, wallet.html, transactions.html, withdrawals.html, profile.html, notifications.html ... signed-in pages (site root)
+- coming-soon.html ... shown for pages not built yet
+- assets/css/dashboard.css ... layout for all signed-in pages
+- assets/css/wallet.css ... wallet balance card and progress bar
+- assets/js/dashboard.js, wallet.js, transactions.js, withdrawals.js, profile.js, notifications.js ... one script per page
+Changed: assets/js/config.js, assets/js/common.js, assets/css/responsive.css, SETUP.md, README.md
+No new SQL migrations are needed for Part 2.

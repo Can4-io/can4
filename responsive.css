@@ -26,3 +26,27 @@
   .cta{padding:1.8rem 1.4rem}
   .cta .btn{width:100%}
 }
+
+/* ---- Part 2: signed-in pages ---- */
+@media (max-width:1100px){
+  .stat-grid{grid-template-columns:repeat(3,1fr)}
+  .action-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:820px){
+  .two-col,.two-col-wide{grid-template-columns:1fr}
+  .stat-grid-4{grid-template-columns:repeat(2,1fr)}
+  #app-nav{top:68px}
+}
+@media (max-width:560px){
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-grid .stat:first-child{grid-column:1/-1}
+  .action-grid{grid-template-columns:1fr 1fr}
+  .action-grid .btn:first-child{grid-column:1/-1}
+  .wallet-hero{padding:1.4rem}
+  .wallet-hero .btn{width:100%}
+  .filters{align-items:stretch}
+  .field.inline{width:100%}
+  .row{flex-direction:column;gap:.5rem}
+  .row-side{justify-items:start;grid-auto-flow:column;align-items:center;gap:.8rem}
+  .copy-row{flex-direction:column;align-items:stretch;text-align:center}
+}

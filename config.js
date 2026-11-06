@@ -7,5 +7,5 @@ export const CONFIG = {
   SUPABASE_ANON_KEY: 'YOUR_SUPABASE_ANON_KEY',
   SITE_URL: '',                       // e.g. 'https://can42.pages.dev' (leave '' to use the current site)
   SUPPORT_EMAIL: 'ashfaqpk.76587@gmail.com',
-  POST_LOGIN_PAGE: 'index.html'       // change to 'dashboard.html' when Part 2 is added
+  POST_LOGIN_PAGE: 'dashboard.html'
 };

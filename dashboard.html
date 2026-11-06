@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dashboard | CAN42</title>
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body data-page="dashboard">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<div id="app-nav"></div>
+<main id="main" hidden>
+<div class="container app-page">
+  <div class="page-head"><div><h1 id="welcome">Welcome</h1><p class="sub">Your CAN42 account at a glance.</p></div></div>
+  <div id="notices"></div>
+  <section class="stat-grid" aria-label="Your balances">
+    <div class="stat"><span class="stat-label">Available points</span><strong class="stat-value" data-stat="available">&ndash;</strong><span class="stat-sub" data-stat="available-sub"></span></div>
+    <div class="stat"><span class="stat-label">Pending points</span><strong class="stat-value" data-stat="pending">&ndash;</strong><span class="stat-sub" data-stat="pending-sub">Waiting for approval</span></div>
+    <div class="stat"><span class="stat-label">Lifetime earned</span><strong class="stat-value" data-stat="lifetime">&ndash;</strong><span class="stat-sub" data-stat="lifetime-sub"></span></div>
+    <div class="stat"><span class="stat-label">Completed opportunities</span><strong class="stat-value" data-stat="completed">&ndash;</strong><span class="stat-sub" data-stat="completed-sub"></span></div>
+    <div class="stat"><span class="stat-label">Referrals</span><strong class="stat-value" data-stat="referrals">&ndash;</strong><span class="stat-sub" data-stat="referrals-sub"></span></div>
+  </section>
+  <section class="action-grid" aria-label="Quick actions">
+    <a class="btn btn-primary" href="earn.html">Start Earning</a>
+    <a class="btn btn-ghost" href="videos.html">Watch Videos</a>
+    <a class="btn btn-ghost" href="advertisements.html">View Ads</a>
+    <a class="btn btn-ghost" href="referrals.html">Invite Friends</a>
+    <a class="btn btn-ghost" href="wallet.html">Open Wallet</a>
+    <a class="btn btn-ghost" href="withdrawals.html">Request Withdrawal</a>
+  </section>
+  <div class="two-col">
+    <section class="panel"><div class="panel-head"><h2>Recent transactions</h2><a href="transactions.html">View all</a></div><ul class="list" id="recent-tx"><li class="empty">Loading...</li></ul></section>
+    <section class="panel"><div class="panel-head"><h2>Withdrawal history</h2><a href="withdrawals.html">View all</a></div><ul class="list" id="recent-wd"><li class="empty">Loading...</li></ul></section>
+  </div>
+</div>
+</main>
+<div id="site-footer"></div>
+<script type="module" src="assets/js/dashboard.js"></script>
+</body>
+</html>

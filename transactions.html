@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Transactions | CAN42</title>
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body data-page="transactions">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<div id="app-nav"></div>
+<main id="main" hidden>
+<div class="container app-page">
+  <div class="page-head"><div><h1>Transactions</h1><p class="sub">Every change to your points, newest first.</p></div></div>
+  <div class="filters">
+    <div class="chips" id="status-chips" role="group" aria-label="Filter by status">
+      <button type="button" class="chip" data-status="all" aria-pressed="true">All</button>
+      <button type="button" class="chip" data-status="pending" aria-pressed="false">Pending</button>
+      <button type="button" class="chip" data-status="approved" aria-pressed="false">Approved</button>
+      <button type="button" class="chip" data-status="rejected" aria-pressed="false">Rejected</button>
+      <button type="button" class="chip" data-status="completed" aria-pressed="false">Completed</button>
+      <button type="button" class="chip" data-status="reversed" aria-pressed="false">Reversed</button>
+    </div>
+    <div class="field inline"><label for="group">Type</label>
+      <select id="group"><option value="all">All types</option><option value="earnings">Earnings</option><option value="withdrawals">Withdrawals</option><option value="other">Reversals and adjustments</option></select></div>
+  </div>
+  <section class="panel"><ul class="list" id="tx-list"><li class="empty">Loading...</li></ul>
+    <div class="list-foot"><span id="tx-count" class="hint"></span><button type="button" class="btn btn-ghost btn-sm" id="load-more" hidden>Load more</button></div></section>
+</div>
+</main>
+<div id="site-footer"></div>
+<script type="module" src="assets/js/transactions.js"></script>
+</body>
+</html>

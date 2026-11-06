@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Profile | CAN42</title>
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body data-page="profile">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<div id="app-nav"></div>
+<main id="main" hidden>
+<div class="container app-page">
+  <div class="page-head"><div><h1>Profile and settings</h1><p class="sub">Manage your details and account security.</p></div></div>
+  <div class="two-col">
+    <section class="panel"><div class="panel-head"><h2>Your details</h2></div>
+      <form id="profile-form" novalidate>
+        <div class="field"><label for="full_name">Full name</label><input id="full_name" name="full_name" maxlength="100" autocomplete="name"></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" disabled><small>To change your email, contact support.</small></div>
+        <div class="form-msg" role="alert" aria-live="polite"></div>
+        <button class="btn btn-primary" type="submit">Save changes</button>
+      </form>
+      <dl class="facts"><div><dt>Account status</dt><dd id="p-status">&ndash;</dd></div><div><dt>Member since</dt><dd id="p-since">&ndash;</dd></div></dl>
+    </section>
+    <section class="panel"><div class="panel-head"><h2>Your referral code</h2></div>
+      <div class="copy-row"><code id="ref-code">&ndash;</code><button type="button" class="btn btn-ghost btn-sm" id="copy-code">Copy code</button></div>
+      <div class="field"><label for="ref-link">Your invite link</label><input id="ref-link" readonly></div>
+      <button type="button" class="btn btn-ghost btn-sm" id="copy-link">Copy link</button>
+      <p class="hint">Referral rewards are reviewed before approval. Self-referrals and duplicate accounts are not allowed.</p>
+    </section>
+  </div>
+  <div class="two-col">
+    <section class="panel"><div class="panel-head"><h2>Change password</h2></div>
+      <form id="password-form" novalidate>
+        <div class="field"><label for="new_password">New password</label><input id="new_password" name="new_password" type="password" data-pw autocomplete="new-password"><small>At least 8 characters, with a letter and a number.</small></div>
+        <div class="field"><label for="confirm_password">Confirm new password</label><input id="confirm_password" name="confirm_password" type="password" data-pw autocomplete="new-password"></div>
+        <label class="check"><input type="checkbox" data-show-password> Show passwords</label>
+        <div class="form-msg" role="alert" aria-live="polite"></div>
+        <button class="btn btn-primary" type="submit">Update password</button>
+      </form></section>
+    <section class="panel"><div class="panel-head"><h2>Sessions</h2></div>
+      <p>Signed in on a shared or lost phone? Log out of every device.</p>
+      <div class="form-msg" id="session-msg" role="alert" aria-live="polite"></div>
+      <button type="button" class="btn btn-ghost" id="logout-all">Log out everywhere</button></section>
+  </div>
+</div>
+</main>
+<div id="site-footer"></div>
+<script type="module" src="assets/js/profile.js"></script>
+</body>
+</html>
